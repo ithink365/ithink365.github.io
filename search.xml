@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<search> 
+  
+  
+    
+    <entry>
+      <title>I-002 开启 H3C 交换机 ICMP 报文发送功能</title>
+      <link href="/2023/03/09/I-002-H3C-SW-ICMP/"/>
+      <url>/2023/03/09/I-002-H3C-SW-ICMP/</url>
+      
+        <content type="html"><![CDATA[<h1 id="开启-H3C-交换机-ICMP-报文发送功能"><a href="#开启-H3C-交换机-ICMP-报文发送功能" class="headerlink" title="开启 H3C 交换机 ICMP 报文发送功能"></a>开启 H3C 交换机 ICMP 报文发送功能</h1><p>之前的项目实施中用到一批 H3C 交换机，网络测试时发现 PING 包正常，但是路由跟踪时数据包经过这些交换机时没有对应的回显。经过一番搜索和查阅设备文档，发现原因是：设备默认关闭了 ICMP 超时和不可达报文的发送功能。</p><p>开启命令如下：</p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">ip ttl-expires enable</span><br><span class="line">ip unreachables enable</span><br></pre></td></tr></table></figure>]]></content>
+      
+      
+      <categories>
+          
+          <category> 工作 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> network </tag>
+            
+            <tag> switch </tag>
+            
+            <tag> h3c </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>I-001 Hello World</title>
+      <link href="/2023/03/07/I-001-Hello-World/"/>
+      <url>/2023/03/07/I-001-Hello-World/</url>
+      
+        <content type="html"><![CDATA[<h1 id="Hello-World"><a href="#Hello-World" class="headerlink" title="Hello World"></a>Hello World</h1><p><img src="/2023/03/07/I-001-Hello-World/001.jpg"></p>]]></content>
+      
+      
+      
+    </entry>
+    
+    
+  
+  
+</search>
