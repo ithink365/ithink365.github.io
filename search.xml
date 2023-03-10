@@ -4,6 +4,35 @@
   
     
     <entry>
+      <title>I-003 H3C 交换机的 STP DISPUTE 机制</title>
+      <link href="/2023/03/10/I-003-H3C-SW-STP-DISPUTE/"/>
+      <url>/2023/03/10/I-003-H3C-SW-STP-DISPUTE/</url>
+      
+        <content type="html"><![CDATA[<h1 id="H3C-交换机的-STP-DISPUTE-机制"><a href="#H3C-交换机的-STP-DISPUTE-机制" class="headerlink" title="H3C 交换机的 STP DISPUTE 机制"></a>H3C 交换机的 STP DISPUTE 机制</h1><h2 id="关于-STP-DISPUTE-机制的介绍"><a href="#关于-STP-DISPUTE-机制的介绍" class="headerlink" title="关于 STP DISPUTE 机制的介绍"></a>关于 STP DISPUTE 机制的介绍</h2><p>关于 H3C 交换机的 STP DISPUTE 机制，先转发一篇官方的文章。</p><p><a href="https://mp.weixin.qq.com/s/4dlIhkcEWZ4o8Jh9UkewOw">H3C 交换机的 STP Dispute 保护机制</a></p><p>STP DISPUTE 机制生效后，会导致对应端口处于阻塞状态。<br>查看设备日志，会有类似如下的告警：</p><blockquote><p>%Oct 25 20:39:24:496 2019 H3C-SW-S5560X STP&#x2F;4&#x2F;STP_DISPUTE: Instance 0’s port Bridge-Aggregation11 received an inferior BPDU from a designated port which is in forwarding or learning state.</p></blockquote><p>查看 STP 异常端口，会有类似如下的信息：</p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">&lt;H3C-SW-S5560X&gt;dis stp abnormal-port</span><br><span class="line">---[Bridge-Aggregation11]---</span><br><span class="line">MST ID BlockReason Time</span><br><span class="line">0 Disputed 20:58:22 10/25/2019</span><br><span class="line">0 Disputed 20:58:20 10/25/2019</span><br><span class="line">0 Disputed 20:58:18 10/25/2019</span><br></pre></td></tr></table></figure><h2 id="产生的原因"><a href="#产生的原因" class="headerlink" title="产生的原因"></a>产生的原因</h2><p>详细分析参考官方文章里的实验说明，简言之就是网络中有交换机关闭了 STP 功能导致。</p><h2 id="规避方法"><a href="#规避方法" class="headerlink" title="规避方法"></a>规避方法</h2><p>如果设备都是由一方管理，则全局开启交换机 STP 功能。<br>如果涉及不同管理方，而且只能调整本端设备的配置，可尝试以下方法：</p><ol><li>关闭端口 STP 功能</li><li>关闭设备 STP DISPUTE 功能<blockquote><p>undo stp dispute-protection</p></blockquote></li><li>调整设备 STP 模式为 PVST<blockquote><p>stp mode pvst</p></blockquote></li></ol>]]></content>
+      
+      
+      <categories>
+          
+          <category> 工作 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> network </tag>
+            
+            <tag> switch </tag>
+            
+            <tag> h3c </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>I-002 开启 H3C 交换机 ICMP 报文发送功能</title>
       <link href="/2023/03/09/I-002-H3C-SW-ICMP/"/>
       <url>/2023/03/09/I-002-H3C-SW-ICMP/</url>
